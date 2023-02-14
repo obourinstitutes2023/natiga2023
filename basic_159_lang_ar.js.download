@@ -1,0 +1,699 @@
+var dir = "rtl";
+
+var advURL = "";
+var advTitle = "";
+var advImage = "";
+var advURL2 = "";
+var advTitle2 = "";
+var advImage2 = "";
+var advURL3 = "";
+var advTitle3 = "";
+var advImage3 = "";
+
+
+var countrycodes =  new Array (
+1,20,212,213,216,218,220,221,222,223,224,225,226,227,228,229,230,231,232,233,234,235,
+236,237,238,239,240,241,242,243,244,245,248,249,250,251,252,253,254,255,256,257,258,
+260,261,262,263,264,265,266,267,268,269,27,291,297,298,299,30,31,32,33,34,350,351,352,
+353,354,355,356,357,358,359,36,370,371,372,373,374,375,376,377,378,380,381,382,385,386,387,
+389,39,40,41,420,421,423,43,44,45,46,47,48,49,500,501,502,503,504,505,506,507,508,509,51,52,
+53,54,55,56,57,58,590,591,592,593,594,595,596,597,598,599,60,61,62,63,64,65,66,670,672,673,674,
+675,676,677,678,679,680,681,682,685,686,687,688,689,691,692,7,81,82,84,850,852,853,855,856,86,
+880,882,886,90,91,92,93,94,95,960,961,962,963,964,965,966,967,968,970,971,972,973,974,975,976,
+977,98,992,993,994,995,996,998);
+
+
+var styles = new Array (
+"classic",
+"blue",
+"earth",
+"orange",
+"flowers" );
+
+var stylenames = new Array (
+"ÃÎÖÑ",
+"ÃÒÑŞ",
+"ÇáÃÑÖ",
+"ÒåæÑ",
+"äÌæã");
+
+var languages = new Array (
+"ar",
+"en" );
+
+var languagenames = new Array (
+"ÚÑÈí",
+"English");
+
+//var forums_logo_url = "icon.aspx?i=startimes_forums2";
+//var forums_windowtitle = "ãäÊÏíÇÊ ÓÊÇÑ ÊÇíãÒ: ";
+//var main_site_title = "ãäÊÏíÇÊ ÓÊÇÑ ÊÇíãÒ";
+
+var forums_confirm_leave_page = "ÇáĞåÇÈ Çáì ÕİÍÉ ÃÎÑì ÓíÎÓÑ ÇáäÕ ÇáÌÏíÏ ÇáĞí ÇÏÎáÊå\r\n\r\n åá ÃäÊ ãÊÃßÏ ãä ÑÛÈÊß İí ÇáĞåÇÈ Çáì ÕİÍÉ ÃÎÑì¿";
+var forums_refresh_selector_0 = "áÇ ÊÍÏíË";
+var forums_refresh_selector_1 = "ßá ÏŞíŞÉ";
+var forums_refresh_selector_5 = "ßá 5 ÏŞÇÆŞ";
+var forums_refresh_selector_10 = "ßá 10 ÏŞÇÆŞ";
+var forums_refresh_selector_15 = "ßá 15 ÏŞíŞÉ";
+var forums_selector_pick = "-- ÅÎÊÇÑ ãäÊÏì ãä ÇáŞÇÆãÉ --";
+var forums_GMT = "GMT";
+var forums_toplinks_tooltip_mainpage = "ÕİÍÉ ÇáÈÏÇíÉ";
+var forums_toplinks_tooltip_archive = "ÇáÃÑÔíİ";
+var forums_toplinks_tooltip_yourposts = "ãÔÇÑßÇÊß";
+var forums_toplinks_tooltip_members = "ÇáÃÚÖÇÁ";
+var forums_toplinks_tooltip_monitoring = "ÇáãİÖáÉ";
+var forums_toplinks_tooltip_chat = "äŞÇÔ Íí<br><font color=red>ÌÏíÏ!</font>";
+var forums_toplinks_tooltip_active = "ãæÇÖíÚ äÔØÉ";
+var forums_toplinks_tooltip_search = "ÅÈÍË";
+var forums_toplinks_tooltip_help = "ãÓÇÚÏÉ";
+var forums_toplinks_tooltip_yourdetails = "ÈíÇäÇÊß";
+var forums_toplinks_tooltip_register = "ÓÌá äİÓß ßÚÖæ!";
+var forums_toplinks_tooltip_exit = "ÎÑæÌ";
+var forums_windowtitle_your_posts = "ãÔÇÑßÇÊß";
+var forums_windowtitle_posts_of = "ãÔÇÑßÇÊ ";
+var forums_windowtitle_details_of = "ÊİÇÕíá ÇáÚÖæ: ";
+var forums_windowtitle_members = "ŞÇÆãÉ ÇáÃÚÖÇÁ";
+var forums_toplinks_tooltip_mail = "ÇáÑÓÇÆá";
+
+var forums_login_username = "ÇáÇÓã:";
+var forums_login_password = "ÇáßáãÉ ÇáÓÑíÉ:";
+var forums_login_temp_login = "* ÏÎæá ãÄŞÊ *";
+var forums_login_posts = "ÇáãÔÇÑßÇÊ:";
+var forums_login_remember_me = "ÅÍİÙ ÇáÊİÇÕíá İí ÌåÇÒß ááÒíÇÑÉ ÇáÊÇáíÉ";
+var forums_login_forgot_password = "åá äÓíÊ ÇáßáãÉ ÇáÓÑíÉ¿ ÃÖÛØ åäÇ..";
+
+var forums_login_remember_title = "ÍİÙ ÇáÊİÇÕíá";
+var forums_login_remember_all = "ÅÍİÙ ÅÓãß æßáãÊß ÇáÓÑíÉ İí åĞÇ ÇáÌåÇÒ";
+var forums_login_remember_name = "ÅÍİÙ ÃÓãß İŞØ İí åĞÇ ÇáÌåÇÒ ááÒíÇÑÇÊ ÇáŞÇÏãÉ";
+var forums_login_remember_none = "ÏÎæá ãÄŞÊ - áä ÊÍİÙ ÊİÇÕíáß ááÒíÇÑÇÊ ÇáŞÇÏãÉ";
+
+var forums_online_chat1 = "ÕÇáÇÊ äŞÇÔ ßæææÑÉ:";
+var forums_online_chat2 = "ÕÇáÇÊ äŞÇÔ ÓÊÇÑ ÊÇíãÒ:";
+var forums_online_chat3 = "äŞÇÔ ÇáãÔÑİíä";
+var forums_online_chat6 = "äŞÇÔ ÇáãÑÇŞÈíä";
+var forums_online_chat7 = "ÕÇáÇÊ äŞÇÔ ÓÈíííÏ:";
+var forums_online_members = "ÇáÃÚÖÇÁ İí ÇáãäÊÏíÇÊ:";
+
+var forums_date_yesterday = "íæã ÃãÓ";
+var forums_date_today = "Çáíæã";
+
+var main_stats_title = "İí ÇáãæŞÚ ÇáÂä:";
+var main_stats_members = "ÃÚÖÇÁ:";
+var main_stats_visitors = "ÒæÇÑ:";
+var main_stats_mods = "ãÔÑİæä:";
+var main_stats_max = "ÃßÈÑ ÚÏÏ İí Ãí æŞÊ:";
+var main_tooltips_new = "ÊæÌÏ ãÔÇÑßÇÊ ÌÏíÏÉ ãäĞ ÂÎÑ ÒíÇÑÉ áß İí åĞÇ ÇáãäÊÏì.";
+var main_tooltips_locked = "åĞÇ ÇáãäÊÏì ãŞİæá æáÇ íãßäß ÇáãÔÇÑßÉ İíå.";
+
+var main_site_program = "åĞÇ ÇáãæŞÚ íÓÊÎÏã ÈÑäÇãÌ";
+
+var main_table_topics = "ãæÇÖíÚ";
+var main_table_replies = "ÑÏæÏ";
+var main_table_members = "<a href=\"javascript:void(0);\"><img src=\"icon.aspx?m=group\" alt=\"ÃÚÖÇÁ İí ÇáãäÊÏì ÍÇáíÇ\" border=0></a>";
+var main_table_lastpost = "ÂÎÑ ãÔÇÑßÉ";
+var main_table_mods = "ÇáãÔÑİæä";
+var main_table_sups = "ÇáãÑÇŞÈæä";
+
+var forum_view_all = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ÇáÊÕİÍ ÇáÚÇÏí";
+var forum_view_unapproved = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ÊäÊÙÑ ÇáãæÇİŞÉ";
+var forum_view_held = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ãÌãÏÉ ";
+var forum_view_locked = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ãŞİæáÉ";
+var forum_view_reply_unapproved = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ÑÏæÏ ÊäÊÙÑ ÇáãæÇİŞÉ";
+var forum_view_reply_held = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ÑÏæÏ ãÌãÏÉ";
+// var forum_view_newsletter = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ááäÔÑÉ ÇáÇÓÈæÚ";
+var forum_view_deleted = "ÎíÇÑÇÊ ÇáÅÏÇÑÉ: ãæÇÖíÚ ãÍĞæİÉ";
+var forum_view_reply_hidden = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ÑÏæÏ ãÎİíÉ";
+var forum_view_topic_hidden = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ãÎİíÉ";
+var forum_view_toptopic = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ããíÒÉ";
+var forum_view_noarchive = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ áÇ ÊäÊŞá ááÃÑÔíİ";
+var forum_view_surveys = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ãÑÈæØÉ ÈÅÓÊİÊÇÁÇÊ";
+var forum_view_moved = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ãäŞæáÉ";
+var forum_view_edited = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ Êã ÊÛííÑ äÕåÇ";
+var forum_view_unpinned = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ßÇäÊ ãËÈÊÉ ÓÇÈŞÇ";
+var forum_view_open = "ÎíÇÑÇÊ ÇáÅÔÑÇİ: ãæÇÖíÚ ÛíÑ ãŞİæáÉ";
+var forum_view_totweet = "ÊæíÊÑ: ãæÇÖíÚ ÊäÊÙÑ ÇáÅÑÓÇá";
+var forum_view_tweeted = "ÊæíÊÑ: ãæÇÖíÚ ÃÑÓáÊ";
+
+var forum_table_forum = "ÇáãäÊÏì";
+var forum_table_topic = "ÇáãæÖæÚ";
+var forum_table_topics = "ÇáãæÇÖíÚ";
+var forum_table_author = "ÇáßÇÊÈ";
+var forum_table_replies = "ÇáÑÏæÏ";
+var forum_table_read = "ŞÑÃÊ";
+var forum_table_lastauthor = "ßÇÊÈ ÇáÑÏ";
+var forum_table_lastreply = "ÂÎÑ ÑÏ";
+var forum_table_options = "ÇáÎíÇÑÇÊ";
+
+var topic_tooltips_new = "ÊæÌÏ ãÔÇÑßÇÊ ÌÏíÏÉ ãäĞ ÂÎÑ ÒíÇÑÉ áß İí åĞÇ ÇáãæÖæÚ.";
+var topic_tooltips_hot = "åĞÇ ÇáãæÖæÚ äÔØ.";
+var topic_tooltips_locked = "åĞÇ ÇáãæÖæÚ ãŞİæá æáÇ íãßäß ÇáÑÏ Úáíå.";
+var topic_tooltips_archived = "åĞÇ ÇáãæÖæÚ İí ÇáÃÑÔíİ.";
+var topic_tooltips_unapproved = "ÇáãæÖæÚ íäÊÙÑ ÇáãæÇİŞÉ.";
+var topic_tooltips_held = "ÇáãæÖæÚ ãÌãÏ.";
+var topic_tooltips_survey = "ÇáãæÖæÚ íÍÊæí Úáì ÇÓÊİÊÇÁ";
+var topic_tooltips_toptopic = "åĞÇ ÇáãæÖæÚ ãÊãíÒ";
+var topic_tooltips_archiveable = "åĞÇ ÇáãæÖæÚ İí ŞÇÆãÉ ÇáäŞá ááÃÑÔíİ";
+var topic_tooltips_expand = "ÚÑÖ ÇáãÔÇÑßÉ ÈÇáßÇãá";
+var topic_tooltips_contract = "ÊÕÛíÑ ÚÑÖ ÇáãÔÇÑßÉ ";
+var topic_tooltips_expand_all = "ÚÑÖ ÌãíÚ ÇáãÔÇÑßÇÊ ÈÇáßÇãá";
+var topic_tooltips_contract_all = "ÊÕÛíÑ ÚÑÖ ÌãíÚ ÇáãÔÇÑßÇÊ ";
+var topic_tooltips_select_user = "æÖÚ ÚáÇãÉ ÇáÅÎÊíÇÑ Úáì ÌãíÚ ãÔÇÑßÇÊ åĞÇ ÇáÚÖæ İí åĞå ÇáÕİÍÉ";
+var topic_tooltips_totweet = "íäÊÙÑ ÇáÅÑÓÇá áÊæíÊÑ ";
+var topic_tooltips_tweeted = "ÇáãæÖæÚ äÔÑ İí ÊæíÊÑ ";
+
+var forum_toolbar_new_topic = "ãæÖæÚ ÌÏíÏ";
+var forum_toolbar_page_size = "ÍÌã ÇáÕİÍÉ:";
+var forum_toolbar_sort_by = "ÇáÊÑÊíÈ ÈÊÇÑíÎ:";
+var forum_toolbar_sort_by_last_post = "ÂÎÑ ãÔÇÑßÉ";
+var forum_toolbar_sort_by_topic = "ÇáãæÖæÚ";
+var forum_toolbar_refresh_title = "ÊÍÏíË ÇáÕİÍÉ:";
+var forum_moderated_by = "ÈÅÔÑÇİ";
+var forum_toolbar_msg_to_mods = "ÃÑÓá ÑÓÇáÉ <br>áãÔÑİí<br>åĞÇ ÇáãäÊÏì";
+var forum_toolbar_forum_mail = "ÈÑíÏ <br>ÇáãäÊÏì";
+var forum_toolbar_forum_mail2 = "ÈÑíÏ";
+var forum_toolbar_forum_notify = "ÔßÇæí<br>ÇáãäÊÏì";
+var forum_toolbar_forum_notify2 = "ÔßÇæí";
+
+var forum_mod_selectall = "ÅÎÊÇÑ ßá<br>ÇáãæÇÖíÚ";
+var forum_mod_selectpending = "ÅÎÊÇÑ ÇáãæÇÖíÚ ÇáÊí<br>ÊäÊÙÑ ÇáãæÇİŞÉ İŞØ";
+var forum_mod_selectheld = "ÅÎÊÇÑ ÇáãæÇÖíÚ<br>ÇáãÌãÏÉ İŞØ";
+var forum_mod_selectnone = "ÃáÛí ßá<br>ÇáÇÎÊíÇÑÇÊ";
+var forum_mod_approve_selected = "æÇİŞ Úáì<br>ÇáãæÇÖíÚ ÇáãÎÊÇÑÉ";
+var forum_mod_hold_selected = "ÌãøÏ ÇáãæÇÖíÚ<br>ÇáãÎÊÇÑÉ";
+
+var forum_no_topics_found = "áÇ ÊæÌÏ ÃíÉ ãæÇÖíÚ ãØÇÈŞÉ áÎíÇÑÇÊ ÇáÊÕİÍ."
+	+ "<br><br>"
+	+ "ÇáÑÌÇÁ ÊÛííÑ ÎíÇÑÇÊ ÇáÊÕİÍ ÃÚáÇå Ãæ ÇÎÊíÇÑ ãäÊÏì ÂÎÑ.";
+
+var msg_no_pending_or_held_selected = "áíÓÊ åäÇß Ãí ãæÇÖíÚ ÊäÊÙÑ ÇáãæÇÖíÚ  Ãæ ãÌãÏÉ Êã ÇÎÊíÇÑåÇ";
+var msg_no_pending_selected = "áíÓÊ åäÇß Ãí ãæÇÖíÚ ÊäÊÙÑ ÇáãæÇÖíÚ Êã ÇÎÊíÇÑåÇ"
+var msg_confirm_approve = "ÇáÑÌÇÁ ÊÃßíÏ ÇáãæÇİŞÉ Úáì ÇáãæÇÖíÚ ÇáãÎÊÇÑÉ ÇáÊÇáíÉ";
+var msg_confirm_hold = "ÇáÑÌÇÁ ÊÃßíÏ ÊÌãíÏ ÇáãæÇÖíÚ ÇáãÎÊÇÑÉ ÇáÊÇáíÉ";
+var msg_reconfirm_hold = "åá ÃäÊ ãÊÃßÏ Ãäß ÊÑíÏ ÊÌãíÏ ÇáãæÇÖíÚ ÇáãÎÊÇÑÉ ÇáÊÇáíÉ¿";
+var msg_confirm_approve_single = "ÇáÑÌÇÁ ÊÃßíÏ ÇáãæÇİŞÉ Úáì ÇáãæÖæÚ";
+var msg_confirm_delete_topic = "ÇáÑÌÇÁ ÊÃßíÏ ÍĞİ ÇáãæÖæÚ";
+var msg_reconfirm_delete_topic = "ÇáÑÌÇÁ ÅÚÇÏÉ ÊÃßíÏ ÍĞİ ÇáãæÖæÚ";
+var msg_confirm_lock_topic = "ÇáÑÌÇÁ ÊÃßíÏ Şİá ÇáãæÖæÚ";
+var msg_confirm_unlock_topic = "ÇáÑÌÇÁ ÊÃßíÏ ÅÚÇÏÉ İÊÍ ÇáãæÖæÚ";
+var msg_confirm_approve_reply = "ÇáÑÌÇÁ ÊÃßíÏ ÇáãæÇİŞÉ Úáì ÇáÑÏ";
+var msg_confirm_hold_reply = "ÇáÑÌÇÁ ÊÃßíÏ ÊÌãíÏ ÇáÑÏ ";
+var msg_reconfirm_hold_reply = "ÇáÑÌÇÁ ÅÚÇÏÉ ÊÃßíÏ ÊÌãíÏ ÇáÑÏ";
+var msg_confirm_hide_post = "ÇáÑÌÇÁ ÊÃßíÏ ÅÎİÇÁ ÇáãÔÇÑßÉ ";
+var msg_reconfirm_hide_post = "ÇáÑÌÇÁ ÅÚÇÏÉ ÊÃßíÏ ÅÎİÇÁ ÇáãÔÇÑßÉ";
+var msg_confirm_unhide_post = "ÇáÑÌÇÁ ÊÃßíÏ ÅÙåÇÑ ÇáãÔÇÑßÉ ";
+var msg_reconfirm_unhide_post = "ÇáÑÌÇÁ ÅÚÇÏÉ ÊÃßíÏ ÅÙåÇÑ ÇáãÔÇÑßÉ";
+var msg_confirm_delete_reply = "ÇáÑÌÇÁ ÊÃßíÏ ÍĞİ ÇáÑÏ";
+var msg_reconfirm_delete_reply = "ÇáÑÌÇÁ ÅÚÇÏÉ ÊÃßíÏ ÍĞİ ÇáÑÏ";
+var msg_ = "";
+
+var page_selector_title = "ÇáÕİÍÉ:";
+var page_selector_of = " ãä ";
+
+var switchforum_selector_title = "ÅĞåÈ Çáì ãäÊÏì:";
+
+var leveltitles = new Array (
+	"ÚÖæ ÌÏíÏ",
+	"ÚÖæ ãÈÊÏÆ",
+	"ÚÖæ",
+	"ÚÖæ äÔØ",
+	"ÚÖæ ãÊØæÑ",
+	"ÚÖæ ÃÓÇÓí" );
+
+var title_mod = "ãÔÑİ";
+var title_admin = "ãÏíÑ ÇáãæŞÚ";
+
+var leveltitlesF = new Array (
+	"ÚÖæÉ ÌÏíÏÉ",
+	"ÚÖæÉ ãÈÊÏÆÉ",
+	"ÚÖæÉ",
+	"ÚÖæÉ äÔØÉ",
+	"ÚÖæÉ ãÊØæÑÉ",
+	"ÚÖæÉ ÃÓÇÓíÉ" );
+
+var title_modF = "ãÔÑİÉ";
+
+var title_vsup = "äÇÆÈ ãÑÇŞÈ";
+var title_vsupF = "äÇÆÈÉ ãÑÇŞÈ";
+
+var title_sup = "ãÑÇŞÈ";
+var title_supF = "ãÑÇŞÈÉ";
+
+
+var topic_posts = "ÇáãÔÇÑßÇÊ:";
+var topic_notice_deleted = "** åĞå ÇáãÔÇÑßÉ Êã ÅÒÇáÊåÇ  -- ááÅÓÊİÓÇÑ Úä ÇáÓÈÈ ÇáÑÌÇÁ ÇáÅÊÕÇá ÈãÔÑİ ÇáãäÊÏì **";
+var topic_notice_held = "** åĞå ÇáãÔÇÑßÉ ãÌãÏÉ ÍÊì ÅÔÚÇÑ ÂÎÑ -- ááÅÓÊİÓÇÑ Úä ÓÈÈ ÇáÊÌãíÏ ÇáÑÌÇÁ ÇáÅÊÕÇá ÈãÔÑİ ÇáãäÊÏì **";
+var topic_notice_unapproved = "** åĞå ÇáãÔÇÑßÉ áã íÊã ãÑÇÌÚÊåÇ æÇáãæÇİŞÉ ÚáíåÇ ÈæÇÓØÉ ãÔÑİ ÇáãäÊÏì ÍÊì ÇáÂä **";
+var topic_notice_hidden = "** åĞå ÇáãÔÇÑßÉ Êã ÅÎİÇÆåÇ  -- ááÅÓÊİÓÇÑ Úä ÇáÓÈÈ ÇáÑÌÇÁ ÇáÅÊÕÇá ÈãÔÑİ ÇáãäÊÏì **";
+var topic_notice_deleted2 = "** ãÔÇÑßÉ ãÍĞæİÉ **";
+var topic_toolbar_add_reply = "ÃÖİ ÑÏ";
+var topic_toolbar_send_to_friend = "ÃÑÓá";
+var topic_toolbar_monitor_topic = "ÇáãİÖáÉ";
+var topic_toolbar_print = "ØÈÇÚÉ";
+var topic_toolbar_page_size = "ÍÌã ÇáÕİÍÉ:";
+var topic_toolbar_page_size_replies = "ÑÏ";
+var topic_toolbar_hide_sigs_title = "ÇáÊæÇŞíÚ";
+var topic_toolbar_hide_sigs_hide = "ãÎİíøÉ";
+var topic_toolbar_hide_sigs_show = "ÙÇåÑÉ";
+var topic_showing_single_reply = "íÚÑÖ ÍÇáíÇ ÑÏ ãÚíä ãä ÇáãæÖæÚ - áãÔÇåÏÉ ÇáãæÖæÚ ÈÇáßÇãá ÅÖÛØ åäÇ";
+var topic_showing_member_replies = "íÚÑÖ ÍÇáíÇ ÑÏæÏ ÚÖæ ãÚíä İŞØ İí ÇáãæÖæÚ - áãÔÇåÏÉ ÇáãæÖæÚ ÈÇáßÇãá ÅÖÛØ åäÇ";
+
+var tip_lock_topic = "ÃŞİá ÇáãæÖæÚ";
+var tip_unlock_topic = "ÅİÊÍ ÇáãæÖæÚ";
+var tip_pin_topic = "ËÈøË ÇáãæÖæÚ";
+var tip_unpin_topic = "ÅÒá ÇáÊËÈíÊ Úä ÇáãæÖæÚ";
+var tip_topic_properties = "ÛíÑ ÎÕÇÆÕ ÇáãæÖæÚ";
+var tip_edit_text = "ÛíÑ ÇáäÕ";
+var tip_delete_topic = "ÅÍĞİ ÇáãæÖæÚ";
+var tip_undelete_topic = "ÃÚÏ ÇáãæÖæÚ æÌãíÚ ÑÏæÏå ãä ÇáÍĞİ";
+var tip_reply = "ÑÏ Úáì ÇáãæÖæÚ";
+var tip_approve_topic = "æÇİŞ Úáì ÇáãæÖæÚ";
+var tip_hold_topic = "ÌãøÏ ÇáãæÖæÚ";
+var tip_approve_reply = "æÇİŞ Úáì ÇáÑÏ";
+var tip_hold_reply = "ÌãøÏ ÇáÑÏ";
+var tip_notify = "áİÊ ÇäÊÈÇå ÇáãÔÑİ Çáì åĞå ÇáãÔÇÑßÉ";
+var tip_hide_post = "ÅÎİÇÁ ÇáãÔÇÑßÉ";
+var tip_unhide_post = "ÅÙåÇÑ ÇáãÔÇÑßÉ";
+var tip_privatetopics = "ŞÇÆãÉ ÇáÃÚÖÇÁ ÇáãÎæáæä ÈÑÄíÉ åĞÇ ÇáãæÖæÚ ÇáãÎİí";
+
+var tip_reply_with_quote = "ÑÏ Úáì ÇáãæÖæÚ ÈÅÖÇİÉ äÕ åĞå ÇáãÔÇÑßÉ";
+var tip_member_info = "ãÚáæãÇÊ Úä ÇáÚÖæ";
+var tip_email_member = "ÃÑÓá Ãíãíá áåĞÇ ÇáÚÖæ";
+var tip_mail_member = "ÃÑÓá ÑÓÇáÉ ÎÇÕÉ áåĞÇ ÇáÚÖæ";
+var tip_mail_member_from_mod = "ÃÑÓá ÑÓÇáÉ ÎÇÕÉ áåĞÇ ÇáÚÖæ Úä ØÑíŞ ÈÑíÏ ÇáÅÔÑÇİ";
+var tip_topic_stats = "ÅÍÕÇÆíÇÊ ÑÏæÏ ÇáÃÚÖÇÁ İí åĞÇ ÇáãæÖæÚ";
+var tip_mail_member_mails = "ãÑÇÓáÇÊß ãÚ åĞÇ ÇáÚÖæ";
+var tip_delete_reply = "ÃÍĞİ ÇáÑÏ";
+var tip_undelete_reply = "ÃÑÌÚ ÇáÑÏ ãä ÇáÍĞİ";
+var tip_new_topic = "ÃÖİ ãæÖæÚ ÌÏíÏ";
+var tip_send_to_friend = "ÃÑÓá ÇáãæÖæÚ Çáì ÕÏíŞ";
+var tip_monitor_topic = "ÃÖİ åĞÇ ÇáãæÖæÚ áŞÇÆãÉ ãæÇÖíÚß ÇáãİÖáÉ";
+var tip_printer_friendly = "ÌåÒ ÇáãæÖæÚ ááØÈÇÚÉ";
+var tip_remove_monitor = "ÃÒá åĞÇ ÇáãæÖæÚ ãä ŞÇÆãÉ ãæÇÖíÚß ÇáãİÖáÉ";
+var tip_ = "";
+
+var topic_not_found = "<font size=+2>ÇáãæÖæÚ ÇáãØáæÈ ÛíÑ ãÊæİÑ.</font><br><br>"
+	+ "ŞÏ íßæä åäÇß ÚÏÉ ÅÓÈÇÈ áåĞÇ ãäåÇ:<br><br>"
+	+ "<table><tr><td>* ÑŞã ÇáãæÖæÚ ÇáãØáæÈ ÛíÑ ÕÍíÍ. </td></tr>"
+	+ "<tr><td>* ÇáãæÖæÚ áã ÊÊã ÇáãæÇİŞÉ Úáíå ááÂä ãä ŞÈá ØÇŞã ÇáÅÔÑÇİ. </td></tr>"
+	+ "<tr><td>* ÇáãæÖæÚ Êã ÊÌãíÏå Ãæ ÍĞİå Ãæ ÅÎİÇÄå. </td></tr>"
+	+ "<tr><td>* ÇáãäÊÏì ÇáĞí İíå ÇáãæÖæÚ áÇ íÓãÍ áß ÈÇáÏÎæá Çáíå. </td></tr>"
+	+ "</td></tr></table>";
+
+var survey_choice = "ÇáÎíÇÑ";
+var survey_votes_count = "ÚÏÏ ÇáÃÕæÇÊ";
+var survey_percentage = "ÇáäÓÈÉ";
+var survey_total_votes = "ÅÌãÇáí ÇáÃÕæÇÊ";
+var survey_only_members_can_vote = "ãáÇÍÙÉ: áÇ íÓãÍ ÈÇáÊÕæíÊ ÇáÇ ááÃÚÖÇÁ.";
+var survey_already_voted_can_change = "ãáÇÍÙÉ: ÇäÊ ŞãÊ ÈÇáÊÕæíÊ ÓÇÈŞÇ æÎíÇÑß íÙåÑ Èáæä ãÎÊáİ ÃÚáÇå. <br>áÊÛííÑ ÎíÇÑß ÇÖÛØ Úáì ÎíÇÑ ÂÎÑ.";
+var survey_closed = "ãáÇÍÙÉ: Êã ÅÛáÇŞ åĞÇ ÇáÇÓÊİÊÇÁ.";
+var survey_click_to_vote = "ãáÇÍÙÉ: ááÊÕæíÊ ÅÖÛØ Úáì ÃÍÏ ÇáÎíÇÑÇÊ ÃÚáÇå.";
+var survey_only_certain_members = "áÇ íÓãÍ ááÊÕæíÊ İí åĞÇ ÇáÇÓÊİÊÇÁ<br> ÅáÇ ááÃÚÖÇÁ ÇáãØÇÈŞæä ááãæÇÕİÇÊ ÇáÊÇáíÉ:";
+var survey_only_certain_members_posts = "ÇáãÔÇÑßÇÊ";
+var survey_only_certain_members_days = "ÇáÃíÇã ãäĞ ÊÓÌíá ÇáÚÖæ";
+var survey_min_limit = "ÇáÚÏÏ ÇáÅÏäì";
+var survey_current = "ÇáÚÏÏ ÇáÍÇáí";
+var survey_secret = "- ÓÑøí -";
+var survey_waiting = "ãáÇÍÙÉ: áã íÊã İÊÍ ÇáÊÕæíÊ áåĞÇ ÇáÅÓÊİÊÇÁ ÍÊì ÇáÂä.";
+
+var edited_a = "ÊãÊ ÇáãæÇİŞÉ Úáì ÇáãÔÇÑßÉ ÈæÇÓØÉ ";
+var edited_h = "Êã ÊÌãíÏ ÇáãÔÇÑßÉ ÈæÇÓØÉ ";
+var edited_u = "Êã ÅÚÇÏÉ İÊÍ ÇáãæÖæÚ ÈæÇÓØÉ ";
+var edited_l = "Êã Şİá ÇáãæÖæÚ ÈæÇÓØÉ ";
+var edited_e = "Êã ÊÛííÑ ÇáäÕ ÈæÇÓØÉ ";
+var edited_d = "Êã ÍĞİ ÇáãÔÇÑßÉ ÈæÇÓØÉ ";
+var edited_m = "Êã äŞá ÇáãæÖæÚ ÈæÇÓØÉ ";
+var edited_i = "Êã ÅÎİÇÁ ÇáãÔÇÑßÉ ÈæÇÓØÉ ";
+var edited_v = "Êã ÅÒÇáÉ ÅÎİÇÁ ÇáãÔÇÑßÉ ÈæÇÓØÉ ";
+var edited_p = "Êã ÊËÈíÊ ÇáãæÖæÚ ÈæÇÓØÉ ";
+var edited_x = "Êã ÅÒÇáÉ ÊËÈíÊ ÇáãæÖæÚ ÈæÇÓØÉ ";
+var edited_f = "ÂÎÑ ÊÛííÑ ááäÕ ÈæÇÓØÉ ";
+var edited_count = "ÚÏÏ ãÑÇÊ ÊÛííÑ ÇáäÕ";
+
+var nav_prev_page = "ÇáÕİÍÉ ÇáÓÇÈŞÉ";
+var nav_next_page = "ÇáÕİÍÉ ÇáÊÇáíÉ";
+var nav_first_page = "ÇáÕİÍÉ ÇáÃæáì";
+var nav_last_page = "ÇáÕİÍÉ ÇáÃÎíÑÉ";
+
+var editmember_member_edit = "ÊÛííÑ ÈíÇäÇÊ ÇáÚÖæ";
+var editmember_edit = "ÊÛííÑ ÈíÇäÇÊß";
+var editmember_please_update = "ÇáÑÌÇÁ ãäß ÊÍÏíË ÈíÇäÇÊß ãä æŞÊ áÂÎÑ";
+
+var editmember_edit_main1 = "ÎíÇÑÇÊ æÈíÇäÇÊ ÚÖæíÊß";
+var editmember_edit_main2 = "ÇáÑÌÇÁ ãäß ÅÎÊíÇÑ ÃÍÏ ÇáÃÏæÇÊ ÃÏäÇå";
+var editmember_edit_menu1 = "ÊÛííÑ ÈÑíÏß ÇáÅáßÊÑæäí Ãæ ßáãÊß ÇáÓÑíÉ";
+var editmember_edit_menu2 = "ÊÛííÑ ÈíÇäÇÊß ÇáÔÎÕíÉ æÎíÇÑÇÊ ÇáÚÖæíÉ";
+var editmember_edit_menu3 = "ÊÛííÑ ÊæŞíÚß ÇáĞí íÙåÑ İí ÃÓİá ãÔÇÑßÇÊß";
+var editmember_edit_menu4 = "ÊİÇÕíá ÇáÃæÓãÉ ÇáããäæÍÉ áß æÊÛííÑ æÓÇãß ÇáÍÇáí";
+var editmember_edit_menu5 = "ŞæÇÆã ÇáÃÚÖÇÁ ÇáÎÇÕÉ Èß";
+var editmember_edit_menu6 = "ØáÈ ÊÛííÑ ÅÓã ÇáÚÖæíÉ";
+var editmember_edit_menu7 = "ÇáãæÇÖíÚ ÇáãÎİíÉ ÇáãİÊæÍÉ áß";
+
+var member_name = "ÇáÇÓã";
+var member_posts = "ÚÏÏ ÇáãÔÇÑßÇÊ";
+var member_points = "äŞÇØ ÇáÊãíÒ";
+var member_level = "ÇáãÓÊæì";
+var member_monitor = "ÇáãÑÇŞÈÉ";
+var member_email = "ÇáÈÑíÏ ÇáÅáßÊÑæäí";
+var member_pass0 = "ÇáßáãÉ ÇáÓÑíÉ ÇáÍÇáíÉ";
+var member_pass1 = "ÇáßáãÉ ÇáÓÑíÉ ÇáÌÏíÏÉ";
+var member_pass = "ÇáßáãÉ ÇáÓÑíÉ";
+var member_pass2 = "ÊÃßíÏ ÇáßáãÉ ÇáÓÑíÉ";
+var member_city = "ÇáãÏíäÉ";
+var member_state = "ÇáãäØŞÉ";
+var member_country = "ÇáÏæáÉ";
+var member_occupation = "ÇáãåäÉ";
+var member_marstatus = "ÇáÍÇáÉ ÇáÅÌÊãÇÚíÉ";
+var member_age = "ÇáÚãÑ";
+var member_title = "ÇáæÕİ";
+var member_male = "ĞßÑ";
+var member_female = "ÃäËì";
+var member_unspecified = "ÛíÑ ãÍÏÏ";
+var member_sex = "ÇáÌäÓ";
+var member_email_allow = "ÈÑíÏß ÇáÅáßÊÑæäí";
+var member_email_allow_no = "áÇ íÓãÍ ááÃÚÖÇÁ ÈÅÑÓÇá ÈÑíÏ ÅáßÊÑæäí Åáíß";
+var member_email_allow_yes = "íãßä ááÃÚÖÇÁ Ãä íÑÓáæÇ áß ÈÑíÏ ÅáßÊÑæäí";
+var member_browse_visible = "ÊÕİÍß İí ÇáãäÊÏíÇÊ";
+var member_browse_visible_no = "ÊÕİÍß ãÎİí Úä ÇáÃÚÖÇÁ";
+var member_browse_visible_yes = "ÊÕİÍß íÙåÑ ááÃÚÖÇÁ";
+var member_signature = "ÇáÊæŞíÚ";
+var member_click_to_edit_signature = "-- ÅÖÛØ åäÇ áÊÛííÑ ÊæŞíÚß  ÇáĞí íÙåÑ İí äåÇíÉ ßá ãÔÇÑßÇÊß --";
+var member_photo = "ÚäæÇä ÕæÑÊß Úáì ÇáÃäÊÑäÊ";
+var member_homepage = "ÕİÍÊß ÇáÔÎÕíÉ Úáì ÇáÅäÊÑäÊ";
+var member_link1 = "æÕáÉ ÊŞÊÑÍåÇ";
+var member_link2 = "æÕáÉ ÊŞÊÑÍåÇ";
+var member_quote = "ÅŞÊÈÇÓ Ãæ <br>ãŞæáÉ ãİÖáÉ";
+var member_bio = "ÓíÑÊß ÇáĞÇÊíÉ";
+var member_hobbies = "åæÇíÇÊß";
+var member_news = "ÂÎÑ ÃÎÈÇÑß";
+var member_msgs_allow_no = "áÇ íÓãÍ ááÃÚÖÇÁ ÈÅÑÓÇá ÑÓÇÆá ÎÇÕÉ Åáíß"
+//	+ "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size=-1 color=red>ãÇ ÚÏÇ ÇáÃÚÖÇÁ İí ŞÇÆãÉ ÇáÃÕÏŞÇÁ ÇáÎÇÕÉ Èß"
+	;
+
+var member_msgs_allow_yes = "íãßä ááÃÚÖÇÁ Ãä íÑÓáæÇ áß ÑÓÇÆá ÎÇÕÉ"
+//	+ "<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font size=-1 color=red>ãÇ ÚÏÇ ÇáÃÚÖÇÁ İí ŞÇÆãÉ ÇáããäæÚíä ÇáÎÇÕÉ Èß"
+	;
+
+var req_enter_changes = "ÃÏÎá ÇáÊÛííÑÇÊ";
+var req_cancel_changes = "ÅáÛÇÁ ÇáÊÛííÑÇÊ";
+var req_return = "ÅÑÌÚ";
+var req_highlight_note = "ãáÇÍÙÉ: ÇáÎíÇÑÇÊ ÇáÊí Êã ÊÛííÑåÇ ÊÙåÑ ÈÇááæä ÇáÃÍãÑ";
+
+var member_info_title = "ÊİÇÕíá ÇáÚÖæ";
+var member_info_photo = "ÕæÑÊí ÇáÔÎÕíÉ";
+var member_info_click_to_expand = "ÅÖÛØ Úáì ÇáÕæÑÉ áÊßÈíÑåÇ";
+var member_info_contacts = "ØÑŞ ÇáÅÊÕÇá Èí";
+var member_info_click_to_email = "-- ÅÖÛØ åäÇ áÅÑÓÇá ÈÑíÏ ÅáßÊÑæäí ááÚÖæ --";
+var member_info_click_to_mail = "-- ÅÖÛØ åäÇ áÅÑÓÇá ÑÓÇáÉ ÎÇÕÉ ááÚÖæ --";
+var member_info_not_available = "-- ÛíÑ ãÊæİÑ --";
+var member_info_stats = "ÅÍÕÇÆíÇÊ";
+var member_info_last_visit = "ÂÎÑ ÒíÇÑÉ";
+var member_info_reg_date = "ÊÇÑíÎ ÇáÊÓÌíá";
+var member_info_visits = "ÚÏÏ ÇáÒíÇÑÇÊ";
+var member_info_hits = "ÚÏÏ ÇáÊÕİÍ";
+var member_info_last_posts = "ÂÎÑ ÇáãæÇÖíÚ ÇáÊí ÔÇÑß İíåÇ ÇáÚÖæ";
+var member_info_last_posts_click = "ÅÖÛØ åäÇ áãÔÇåÏÉ ãÔÇÑßÇÊ ÇáÚÖæ";
+var member_info_details = "ÇáÈíÇäÇÊ ÇáßÇãáÉ";
+var member_info_address = "ÇáÚäæÇä";
+var member_info_other_info = "ãÚáæãÇÊ ÅÖÇİíÉ";
+var member_info_bio = "ÇáÓíÑÉ ÇáĞÇÊíÉ";
+var member_info_hobbies = "åæÇíÇÊ";
+var member_info_news = "ÂÎÑ ÇáÃÎÈÇÑ";
+var member_info_quote = "ÅŞÊÈÇÓí ÇáãİÖá";
+var member_info_links_title = "æÕáÇÊí ÇáãİÖáÉ";
+var member_info_links = "æÕáÇÊ ÇŞÊÑÍåÇ";
+var member_info_homepage = "ÕİÍÊí Úáì ÇáÅäÊÑäÊ";
+var member_info_plaques = "ÃæÓãÉ ÇáÊãíÒ ÇáããäæÍÉ ááÚÖæ";
+var member_info_nominate = "ÑÔÍ ÇáÚÖæ<br>áæÓÇã ÊãíÒ";
+var member_info_ = "";
+
+var send_mail_to = "ÃÑÓÇá ÈÑíÏ ÅáßÊÑæäí Çáì ÇáÚÖæ";
+var send_mail_enter_text = "ÇáÑÌÇÁ ÅÏÎÇá äÕ ÇáÑÓÇáÉ ÇáÊí ÊæÏ ÅÑÓÇáåÇ ÃÏäÇå"
+var send_mail_send = "ÃÑÓá ÇáäÕ";
+
+var active_mode_toptopics = "ÇáãæÇÖíÚ ÇáãÊãíÒÉ";
+var active_mode_monitored = "ŞÇÆãÉ ãæÇÖíÚß ÇáãİÖáÉ";
+var active_mode_active = "ÇáãæÇÖíÚ ÇáäÔØÉ";
+var active_mode_private = "ÇáãæÇÖíÚ ÇáãÎİíÉ ÇáãİÊæÍÉ áß";
+var active_toolbar_show = "ÎíÇÑ ÚÑÖ ÇáãæÇÖíÚ";
+var active_type_active = "ÂÎÑ ÇáãÔÇÑßÇÊ İí ßá ÇáãæÇÖíÚ";
+var active_type_active_by_replies = "ÂÎÑ ÇáãæÇÖíÚ ÇáäÔØÉ ÈÚÏÏ ÇáÑÏæÏ";
+var active_type_active_by_reads = "ÂÎÑ ÇáãæÇÖíÚ ÇáäÔØÉ ÈÚÏÏ ãÑÇÊ ÇáŞÑÇÁÉ";
+var active_type_toptopics = "ÇáãæÇÖíÚ ÇáãÊãíÒÉ Úáì ÇáãäÊÏíÇÊ";
+var active_type_monitored = "ŞÇÆãÉ ãæÇÖíÚß ÇáãİÖáÉ";
+var active_type_private = "ÇáãæÇÖíÚ ÇáãÎİíÉ ÇáãİÊæÍÉ áß";
+
+var active_none_monitored = "áÇ ÊæÌÏ ÃíÉ ãæÇÖíÚ  İí ãİÖáÊß ÍÇáíÇ.<br><br>áÅÖÇİÉ ãæÖæÚ áŞÇÆãÉ ãæÇÖíÚß ÇáãİÖáÉ ÅÓÊÎÏã ÇáÃíŞæäÉ ÇáÎÇÕÉ ÈĞáß İí ÕİÍÉ<br><br>ÇáãæÖæÚ ÇáãÑÇÏ ÅÖÇİÊå ááŞÇÆãÉ.";
+var active_none_private = "áÇ ÊæÌÏ ÃíÉ ãæÇÖíÚ  ãÎİíÉ ãİÊæÍÉ áß ÍÇáíÇ.<br><br>åĞå ÇáŞÇÆãÉ áÇ íãßä ÇáÅÖÇİÉ áåÇ ÅáÇ ÈæÇÓØÉ ÇáãÔÑİíä.";
+var active_none_all = "áÇ ÊæÌÏ ÃíÉ ãæÇÖíÚ áåĞÇ ÇáÎíÇÑ.";
+
+var tellfriend_header = "ÅÎÈÇÑ ÕÏíŞ Úä ãæÖæÚ";
+var tellfriend_intro = "áÅÎÈÇÑ ÕÏíŞ áß Úä ÇáãæÖæÚ <br>ÃÏÎá ÈÑíÏå ÇáÅáßÊÑæäí<br>æËã ÅÖÛØ Úáì ÇáÒÑ ÃÏäÇå";
+var tellfriend_send = "ÃÑÓá ÇáãæÖæÚ";
+
+var request_pass_intro = "áÅÓÊÑÌÇÚ ßáãÉ ÇáÓÑ ÇáãİŞæÏÉ <br>ÃÏÎá ÅÓãß ÇáãÓÌá İí ÇáãäÊÏíÇÊ<br>æËã ÅÖÛØ Úáì ÇáÒÑ ÃÏäÇå";
+var request_pass_note = "ãáÇÍÙÉ: íÌÈ Çä íßæä ÇáÇÓã ãØÇÈŞÇ áÓÌáÇÊäÇ ÊãÇãÇ";
+var request_pass_submit = "ÅØáÈ ßáãÉ ÇáÓÑ";
+
+var summary_header_forum = "ÇáãäÊÏì";
+var summary_header_tp = "ãæÇÖíÚ ÊäÊÙÑ ÇáãæÇİŞÉ";
+var summary_header_th = "ãæÇÖíÚ ãÌãÏÉ";
+var summary_header_rp = "ÑÏæÏ ÊäÊÙÑ ÇáãæÇİŞÉ";
+var summary_header_rh = "ÑÏæÏ ãÌãÏÉ";
+var summary_header_ri = "ÑÏæÏ ãÎİíÉ";
+var summary_header_ti = "ãæÇÖíÚ ãÎİíÉ";
+var summary_title = "ãáÎÕ ÇáãäÊÏíÇÊ ÇáÊí ÊÔÑİ ÚáíåÇ";
+var summary_footer1 = "ÇáãäÊÏíÇÊ ÇáÊí ÊÙåÑ ÈÇááæä ÇáÊÇáí";
+var summary_footer2 = "ÊÍÊæí Úáì ãæÇÖíÚ ÊäÊÙÑ ÇáãæÇİŞÉ";
+var summary_footer3 = "ááĞåÇÈ ãÈÇÔÑÉ Çáì ÕİÍÉ ÇáãæÇÖíÚ ÇáÊí ÊäÊÙÑ ÇáãæÇİŞÉ Ãæ ÇáãÌãÏÉ İí Ãí ãäÊÏì.";
+var summary_footer4 = "ÅÖÛØ Úáì ÑŞã ÇáãæÇÖíÚ ãä ÇáÌÏæá ÃÚáÇå.";
+var summary_none = "áÇ ÊæÌÏ ÃíÉ ãæÇÖíÚ ÊäÊÙÑ ÇáãæÇİŞÉ Ãæ ãÌãÏÉ."
+		+ "<br><br>" + "İí ÇáãäÊÏíÇÊ ÇáÊí ÊÔÑİ ÚáíåÇ.";
+
+var tooltip_quote_content  = "ÅäÓÎ äÕ åĞå ÇáãÔÇÑßÉ Çáì ãäØŞÉ ÅÏÎÇá ÇáäÕ";
+var quote_title_author = "ÅŞÊÈÇÓ áãÔÇÑßÉ";
+var quote_title_topic = "İí ãæÖæÚ";
+
+var topicreview_title = "ÅÓÊÚÑÇÖ ãæÖæÚ";
+
+var rules_title = "ÔÑæØ ÇáãÔÇÑßÉ İí ãæÇŞÚ æãäÊÏíÇÊ ßæææÑÉ æÓÊÇÑ ÊÇíãÒ";
+var rules_header1 = "áÊÔÇÑß İí ãæÇŞÚäÇ æãäÊÏíÇÊäÇ íÌÈ Úáíß ÇáÅáÊÒÇã ÈÇáÔÑæØ ÇáÊÇáíÉ";
+var rules_header2 = "äÍä äŞÈá ÃÛáÈíÉ ÇáãÔÇÑßÇÊ ÇáÇ ÇáÊí ÊÍÊæí Úáì";
+
+var rules1 = new Array (
+"ßáÇã ÈĞíÁ Ãæ ãÔíä",
+"åÌæã ãÈÇÔÑ Ãæ ÛíÑ ãÈÇÔÑ Úáì ÔÎÕ Ãæ ÚÖæ Ãæ ãÄÓÓÉ",
+"ÕæÑ ÛíÑ áÇÆŞÉ ãä Ãí äæÚ",
+"ßáÇã íÔÌÚ Úáì ÇáÍŞÏ æÇáßÑÇåíÉ",
+"ÇáäŞÇÔ İí ÇáÃãæÑ ÇáÓíÇÓíÉ",
+"ØáÈ Ãæ  ÊÌãíÚ ÇáãÓÇÚÏÇÊ Ãæ ÇáÊÈÑÚÇÊ ÇáãÇÏíÉ Ãæ ÇáãÚäæíÉ",
+"äŞá äÕ áå ãáßíÉ ÍŞæŞ äÔÑ ÈÏæä ĞßÑ ÇáãÕÏÑ",
+"ÔÑÍ áÚãáíÉ ÇÎÊÑÇŞ ÓæÇÁ áÃÌåÒÉ ßãÈíæÊÑ Ãæ ÔÈßÇÊ Ãæ ÎÏãÇÊ ÊáİÒíæäíÉ Ãæ ÛíÑåÇ",
+"ÇáÅÚáÇä  æÇáÏÚÇíÉ æÇáÅÔåÇÑ ÈÔßá ãÈÇÔÑ Ãæ ÛíÑ ãÈÇÔÑ Úä ãäÊÏíÇÊ Ãæ ãæÇŞÚ ãäÇİÓÉ ÓæÇÁ ÈÇáãÔÇÑßÇÊ Ãæ ÈÇáÑÓÇÆá ÇáÎÇÕÉ",
+"äÔÑ Ãí ÑæÇÈØ ÑÈÍíÉ ÅÓÊÛáÇáíÉ ÓæÇÁ ÈÇáãÔÇÑßÇÊ Ãæ ÈÇáÑÓÇÆá ÇáÎÇÕÉ ",
+"Çí äÔÇØ ÅÌÑÇãí ãä Ãí äæÚ Ãæ ÇáÊÔÌíÚ Úáì ÇáÚäİ");   
+
+
+var rules_notes = "æÇáÑÌÇÁ ãáÇÍÙÉ ÇáÊÇáí";
+
+var rules2 = new Array (
+"ÇáãæŞÚ æãÏíÑ ÇáãæŞÚ æÅÏÇÑÉ ÇáãäÊÏíÇÊ æãÔÑİíåÇ ÛíÑ ãÓÄæáíä Úä ÃíÉ ãÚáæãÇÊ ÊæİÑåÇ Ãæ ãÔÇÑßÇÊ ÊÖíİåÇ",
+"Ãí ãÔÇÑßÇÊ ÊŞæã ÈåÇ İí åĞå ÇáãäÊÏíÇÊ ÊÕÈÍ ãÚáæãÇÊ ÚÇãÉ İäÑÌæ ãäß ÚÏã ÇáÅÏáÇÁ ÈÃíÉ ãÚáæãÇÊ ÓÑíÉ Ãæ ÎÇÕÉ Èß İí ãÔÇÑßÇÊß",
+"åĞå ÇáãäÊÏíÇÊ ŞÏ ÊÍÊæí Úáì æÕáÇÊ Çáì ãæÇŞÚ ÃÎÑì æãÔÇÑßÇÊ ãä ÃİÑÇÏ æÇáãæŞÚ ÛíÑ ãÓÄæá Úä ãÍÊæíÇÊ åĞå ÇáãÔÇÑßÇÊ æÇáæÕáÇÊ",
+"äÑÌæ ÅÎÈÇÑäÇ Úä Ãí ãÔÇÑßÉ Ãæ æÕáÉ ÊÍÊæí Úáì ßáÇã ÈĞíÁ Ãæ ÛíÑ ãŞÈæá Ãæ ÈåÇ ÅäÊåÇß ááÍŞæŞ ÇáİßÑíÉ æÇáÃÏÈíÉ æÇáŞÇäæäíÉ æÓäŞæã ÈÍĞİ åĞå ÇáãÔÇÑßÇÊ ãä ÇáãäÊÏì ÍÇáÇ.",
+"áÅÏÇÑÉ ÇáãæÇŞÚ æİÑŞ ÚãáåÇ ÇáÍŞ İí ÅÒÇáÉ Ãí ãÔÇÑßÉ Ãæ Şİá Ãí ÚÖæíÉ ÈÏæä ÓÇÈŞ ÅäĞÇÑ.");
+
+var rules_contact = "ÇĞÇ ßÇä áÏíß Ãí ÇÓÊİÓÇÑ ÇáÑÌÇÁ ÇÑÓÇá ÈÑíÏ ÇáßÊÑæäí Çáì : <a href=\"mailto:editor@kooora.com\">editor@kooora.com</a>";
+
+
+var edittopic_title = "ÊÛííÑ ÎÕÇÆÕ ÇáãæÖæÚ";
+var edittopic_header_title = "ÚäæÇä ÇáãæÖæÚ";
+var edittopic_header_survey = "ÇáÇÓÊİÊÇÁ";
+var edittopic_header_forum = "ÇáãäÊÏì";
+var edittopic_header_pin = "ÊËÈíÊ ÇáãæÖæÚ";
+var edittopic_header_hot = "ÔÑíØ ÇáãæÇÖíÚ";
+var edittopic_header_links = "æÕáÇÊ ÇáãäÊÏì";
+var edittopic_header_top = "ÇáÊãíÒ";
+var edittopic_header_allowarchive = "ÇáÃÑÔíİ";
+var edittopic_allowarchive_yes = "íãßä äŞáå ááÃÑÔíİ";
+var edittopic_allowarchive_no = "áÇ íãßä äŞáå ááÃÑÔíİ";
+var edittopic_nosurvey = "** áÇ ÅÓÊİÊÇÁ áåĞÇ ÇáãæÖæÚ **";
+var edittopic_hot_no = "áÇ íÙåÑ";
+var edittopic_hot_forum = "íÙåÑ İí ÇáãäÊÏì";
+var edittopic_hot_main = "íÙåÑ İí  ÕİÍÉ ÇáÈÏÇíÉ";
+var edittopic_link_no = "áÇ íÙåÑ";
+var edittopic_link_normal = "æÕáÉ ÚÇÏíÉ";
+var edittopic_link_priority = "æÕáÉ ÃÓÇÓíÉ";
+var edittopic_pin_no = "ÛíÑ ãËÈÊ";
+var edittopic_pin_yes = "ÇáãæÖæÚ ãËÈÊ";
+var edittopic_top_no = "ÛíÑ ãÊãíøÒ";
+var edittopic_top_forum = "ãÊãíøÒ Úáì ÇáãäÊÏì";
+var edittopic_top_main = "ãÊãíøÒ Úáì ßá ÇáãäÊÏíÇÊ";
+
+var edittopic_header_twitter = "Twitter";
+var edittopic_twitter_no = "áÇ íÑÓá áÊæíÊÑ";
+var edittopic_twitter_pending = "íäÊÙÑ ÇáÅÑÓÇá";
+var edittopic_twitter_send = "íÑÓá áÊæíÊÑ ÇáÂä";
+var edittopic_twitter_sent = "ÃÑÓá áÊæíÊÑ ÓÇÈŞÇ";
+
+
+var files_title = "ÍÇİÙÉ ãáİÇÊß";
+var files_header_fname = "ÇÓã Çáãáİ";
+var files_header_size = "ÍÌã Çáãáİ";
+var files_header_date = "ÊÇÑíÎ ÇáÊÍãíá";
+var files_none = "áÇ ÊæÌÏ ÃíÉ ãáİÇÊ İí ÍÇİÙÊß."
+		+ "<br><br>"
+		+ "áÊÍãíá ãáİÇÊ Çáì ÍÇİÙÊß ÇÓÊÎÏã ãíÒÉ ÇáÊÍãíá ÃÏäÇå.";
+var files_select_file = "ÅÎÊÇÑ ãáİ ãä ÌåÇÒß ááÊÍãíá Çáì ÍÇİÙÊß:";
+var files_file_title = "ÅÓã Çáãáİ İí ÍÇİÙÊß:";
+var files_upload = "ÅÈÏÇ ÊÍãíá Çáãáİ";
+var files_delete = "ÅÍĞİ åĞÇ Çáãáİ ãä ÍÇİÙÊß";
+
+var files_upl_name = "ØáÈ ÊÍãíá Çáãáİ ÊÍÊ ÅÓã: ";
+var files_upl_invalid_name = "ÇáÇÓã ÇáãØáæÈ ÛíÑ ŞÇäæäí.";
+var files_upl_write_failed = "áã íÊã ÊÍãíá Çáãáİ áÓÈÈ İäí.  ÇáÑÌÇÁ ÇáÇÊÕÇá ÈÇáÇÏÇÑÉ.";
+var files_upl_no_filename = "ÇáÑÌÇÁ ÊÍÏíÏ ÇÓã ááãáİ İí ÍÇİÙÊß.";
+var files_upl_saved_ok = "Êã ÊÍãíá Çáãáİ ÈäÌÇÍ!";
+var files_confirm_delete = "åá ÃäÊ ãÊÃßÏ Ãäß ÊÑíÏ ÍĞİ åĞÇ Çáãáİ ãä ÍÇİÙÊß¿";
+var files_remaining = "ÇáãÓÇÍÉ ÇáãÊÈŞíÉ áß ááÊÎÒíä";
+var files_full = "áã ÊÈŞì áß Çí ãÓÇÍÉ ááÊÎÒíä.  ÇáÑÌÇÁ ÍĞİ ÈÚÖ ÇáãáİÇÊ ÇĞÇ ÑÛÈÊ ÈÊÍãíá ãáİÇÊ ÃÎÑì.";
+var files_notes = "ÇáãæŞÚ áÇ íÊÍãá ãÓÄæáíÉ ÇáãáİÇÊ ÇáÊí ÊŞæã ÈÊÍãíáåÇ æŞÏ íÊã ÇÒÇáÊåÇ İí Ãí æŞÊ.";
+
+var notify_title_member = "áİÊ ÅäÊÈÇå ÇáãÔÑİ Úä ãÔÇÑßÉ ÇáÚÖæ";
+var notify_title_topic = "İí ãæÖæÚ";
+var notify_enter_text = "ÇáÑÌÇÁ ÅÏÎÇá ãáÇÍÙÇÊß ÈÎÕæÕ åĞå ÇáãÔÇÑßÉ<br>ááãÔÑİ æÓíÊã ãÊÇÈÚÊåÇ ÈÃÓÑÚ æŞÊ ããßä"
+var notify_send = "ÃÑÓá ãáÇÍÙÇÊß";
+
+var notify_opt0 = "áÊÓåíá ãåãÉ ÇáãÔÑİ ÇáÑÌÇÁ ÊÍÏíÏ äæÚ ÇáÈáÇÛ ãä åĞå ÇáŞÇÆãÉ:";
+var notify_opt1 = "ÇáãÔÇÑßÉ ÊÍÊæí Úáì ÕæÑ ÛíÑ áÇÆŞÉ";
+var notify_opt2 = "ÇáãÔÇÑßÉ ÊÍÊæí Úáì ßáÇã ÛíÑ áÇÆŞ";
+var notify_opt3 = "ÇáãÔÇÑßÉ ÊÍÊæí Úáì ÔÊã Çæ ÊåÌã";
+var notify_opt99 = "ãáÇÍÙÇÊ ÃÎÑì (ÇáÑÌÇÁ ÇáÊæÖíÍ ÃÏäÇå)";
+
+var notify_opt1s = "ÕæÑ ÛíÑ áÇÆŞÉ";
+var notify_opt2s = "ßáÇã ÛíÑ áÇÆŞ";
+var notify_opt3s = "ÔÊã Çæ ÊåÌã";
+var notify_opt99s = "ãáÇÍÙÇÊ ÃÎÑì";
+
+var summary_header_np = "ÔßÇæí ÊäÊÙÑ ÇáãÑÇÌÚÉ";
+var summary_header_nh = "ÔßÇæí Êã ÊÑÍíáåÇ ááãÏíÑ";
+var summary_header_mail = "ÑÓÇÆá ÅÔÑÇİíÉ ÌÏíÏÉ";
+var summary_notify_none = "áÇ ÊæÌÏ ÃíÉ ÔßÇæí Ãæ ÑÓÇÆá ÌÏíÏÉ İí ÇáãäÊÏíÇÊ ÇáÊí ÊÔÑİ ÚáíåÇ.";
+
+var notifylist_table_topic = "ÇáãäÊÏì æÇáãæÖæÚ";
+var notifylist_table_about = "Ôßæì Úáì";
+var notifylist_table_by = "ßÇÊÈ ÇáÔßæì";
+var notifylist_table_text = "äÕ ÇáÔßæì";
+var notifylist_table_reply_by = "ÑÏ ÚáíåÇ";
+var notifylist_table_note_by = "ÂÎÑ ãáÇÍÙÉ";
+var notifylist_table_transfer_by = "ÍæøáåÇ ááãÏíÑ";
+var notifylist_table_reply_text = "äÕ ÇáÑÏ";
+var notifylist_table_notes = "ãáÇÍÙÇÊ";
+var notifylist_title = "ÔßÇæí ÇáÃÚÖÇÁ";
+
+var notify_status_new = "ÔßÇæí áã íÊã ÇáÑÏ ÚáíåÇ.";
+var notify_status_admin = "ÔßÇæí Êã ÊÑÍíáåÇ ááãÏíÑ.";
+var notify_status_done = "ÔßÇæí Êã ÇáÑÏ ÚáíåÇ.";
+
+var notifyreply_send_reply = "ÃÑÓá ÇáÑÏ ááÚÖæ";
+var notifyreply_send_admin = "Íæøá ÇáÔßæì ááãÏíÑ";
+var notifyreply_store_only = "ÅÏÎÇá ÇáãáÇÍÙÇÊ İŞØ";
+var notifyreply_close_it = "ÃŞİá ÇáÔßæì";
+var notifyreply_title = "Ôßæì ÑŞã: ";
+var notifyreply_none = "ÇáÔßæì ÇáãØáæÈÉ áíÓÊ ãÊæİÑÉ Ãæ ÇäåÇ ãä ãäÊÏì ÇäÊ áÓÊ ãÔÑİÇ Úáíå.";
+var notifyreply_reply_to_member_textarea = "äÕ ÇáÑÏ Úáì ÇáÚÖæ";
+var notifyreply_notes_textarea = "ãáÇÍÙÇÊ ááãÔÑİíä æÇáÅÏÇÑÉ İŞØ<br>(íÊã ÇÖÇİÊåÇ ááãáÇÍÙÇÊ ÇáÍÇáíÉ)";
+
+var mail_title = "ÇáÑÓÇÆá ÇáÎÇÕÉ";
+var mail_inbox = "ÇáÈÑíÏ ÇáæÇÑÏ";
+var mail_outbox = "ÇáÈÑíÏ ÇáÕÇÏÑ";
+var mail_trash = "ãÌáÏ ÇáãÍĞæİÇÊ";
+var mail_inbox_new = "ÇáÑÓÇÆá ÇáæÇÑÏÉ ÇáÌÏíÏÉ";
+var mail_newmsg = "ÑÓÇáÉ ÌÏíÏÉ";
+var mail_folder = "ãÌáÏÇÊß";
+var mail_emptybox = "áÇ ÊæÌÏ Ãíå ÑÓÇÆá İí åĞÇ ÇáãÌáÏ";
+var mail_tooltip_reply = "ÑÏ Úáì ÇáÑÓÇáÉ";
+var mail_tooltip_delete = "ÍĞİ ÇáÑÓÇáÉ";
+var mail_from = "ãä";
+var mail_to = "Åáì";
+var mail_subject = "ÚäæÇä ÇáÑÓÇáÉ";
+var mail_date = "ÇáÊÇÑíÎ";
+var mail_1_new_msg = "ÊæÌÏ ÑÓÇáÉ ÌÏíÏÉ áß";
+var mail_2_new_msgs = "ÊæÌÏ ÑÓÇáÊÇä ÌÏíÏÊÇä  áß";
+var mail_new_msgs_A = "ÊæÌÏ ";
+var mail_new_msgs_B = "ÑÓÇÆá ÌÏíÏÉ áß";
+var mail_new_msgs_B11 = "ÑÓÇáÉ ÌÏíÏÉ áß";
+var mail_msg_header = "ÑÓÇáÉ ÎÇÕÉ";
+var mail_confirm_delete_msg = "ÇáÑÌÇÁ ÊÃßíÏ ÍĞİ ÇáÑÓÇáÉ";
+var mail_confirm_undelete_msg = "ÇáÑÌÇÁ ÊÃßíÏ ÃÚÇÏÉ ÇáÑÓÇáÉ Çáì ãÌáÏåÇ ÇáÃÕáí";
+var mail_size = "ÇáÍÌã";
+var mail_your_folders = "ãÌáÏÇÊß<br>ÇáÈÑíÏíÉ";
+var mail_editfolders_submit = "ÃÏÎá ÇáÊÛííÑÇÊ Úáì ãÌáÏÇÊß ÇáÈÑíÏíÉ"
+var mail_editfolders_notes = "<font color=red size=+1>ãáÇÍÙÉ:</font><br> áÍĞİ Ãí ãÌáÏ ÅÊÑß ÅÓãå İÇÑÛÇ. <br>ÓíÊã äŞá Çí ÑÓÇÆá İí Ğáß ÇáãÌáÏ Çáì ãÌáÏ ÇáÈÑíÏ ÇáæÇÑÏ Ãæ ÇáÕÇÏÑ";
+var mail_editfolders_header = "<font color=red size=+1>ãÌáÏÇÊß ÇáÈÑíÏíÉ</font><br>" + "áÅÖÇİÉ ãÌáÏÇÊ ÈÑíÏíÉ ÎÇÕÉ Èß áÍİÙ ÇáÑÓÇÆá İíåÇ " + "<br>" + "ÃÏÎá ÚäæÇíä ááãÌáÏÇÊ İí ÇáÎÇäÇÊ ÃÏäÇå";
+var mail_editfolders_number = "ÑŞã ÇáãÌáÏ";
+var mail_editfolders_title = "ÚäæÇä ÇáãÌáÏ";
+var mail_movetofolder_defselect = "-- ÅÎÊÇÑ ãÌáÏ --";
+var mail_movetofolder_submit = "ÃäŞá ÇáÑÓÇáÉ Çáì ÇáãÌáÏ ÇáãÎÊÇÑ";
+var mail_replied = "Êã ÇáÑÏ ÚáíåÇ";
+var mail_thread = "ÇáÑÓÇÆá ÇáãÊÚáŞÉ";
+var mail_threadlink = "åäÇß ÑÓÇÆá ãÊÚáŞÉ ÈåĞå ÇáÑÓÇáÉ -- ÅÖÛØ åäÇ áãÔÇåÏÊåÇ";
+var mail_threadlink0 = "åäÇß ÑÓÇÆá ãÊÚáŞÉ ÈåĞå ÇáÑÓÇáÉ: ";
+var mail_threadlink1 = "ŞÇÆãÉ ÇáÑÓÇÆá ÇáãÊÚáŞÉ";
+var mail_threadlink2 = "ŞÑÇÁÉ ÌãíÚ ÇáÑÓÇÆá ÇáãÊÚáŞÉ";
+var mail_delete = "ÃäŞá ÇáÑÓÇáÉ Çáì ãÌáÏ ÇáãÍĞæİÇÊ";
+var mail_undelete = "ÅÑÌÚ ÇáÑÓÇáÉ Çáì ãÌáÏåÇ ÇáÃÕáì";
+var mail_quote_msg  = "ÅäÓÎ äÕ åĞå ÇáÑÓÇáÉ Çáì ãäØŞÉ ÅÏÎÇá ÇáäÕ";
+var mail_quote_title_author = "ÑÓÇáÉ ãä";
+var mail_quote_title_topic = "ÈÚäæÇä";
+var mail_announcement = "ÅÚáÇä ãä ÅÏÇÑÉ ÇáãäÊÏíÇÊ";
+
+
+var list_your_folders = "ŞæÇÆãß<br>ÇáÎÇÕÉ";
+var list_your_folders_arm = "ŞæÇÆã<br>ÇáÃÚÖÇÁ";
+var list_title = "ŞæÇÆã ÇáÃÚÖÇÁ ÇáÎÇÕÉ Èß";
+var list_title_arm = "ŞæÇÆã ÇáÃÚÖÇÁ ÇáÎÇÕÉ ÈÇáãäÊÏì";
+var mail_header_member = "ÇáÚÖæ";
+
+var list_friends_header = "<font color=red size=+1>ŞÇÆãÉ ÇáÃÕÏŞÇÁ</font><br>"
+	+ "åĞå ÇáŞÇÆãÉ ÊÍÊæí Úáì ÃÚÖÇÁ ÊÚÊÈÑåã ÃÕÏŞÇÁ áß æÊåÊã ÈãÔÇÑßÇÊßã."
+	+ "<br>"
+	+ "áÅÖÇİÉ ÕÏíŞ áåĞå ÇáŞÇÆãÉ ÅĞåÈ Çáì ÕİÍÉ ÈíÇäÇÊå æÅÖÛØ Úáì æÕáÉ ÅÖÇİÊå áŞæÇÆãß ÇáÎÇÕÉ.";
+
+var list_banned_header = "<font color=red size=+1>ŞÇÆãÉ ÇáããäæÚíä</font><br>"
+	+ "áãäÚ ÚÖæ ãä ÅÑÓÇá ÑÓÇÆá ÎÇÕÉ áß ÃÖİå áåĞå ÇáŞÇÆãÉ ÈÇáĞåÇÈ áÕİÍÉ ÈíÇäÇÊå æÅÖÛØ Úáì æÕáÉ ãäÚå ãä ÅÑÓÇá ÑÓÇÆá ÎÇÕÉ áß";
+
+var list_custom_header = "áÅÖÇİÉ ÚÖæ áåĞå ÇáŞÇÆãÉ ÅĞåÈ Çáì ÕİÍÉ ÈíÇäÇÊå æÅÖÛØ Úáì æÕáÉ ÅÖÇİÊå áŞæÇÆãß ÇáÎÇÕÉ.";
+
+var list_empty = "áÇ íæÌÏ ÃíÉ ÃÚÖÇÁ İí åĞå ÇáŞÇÆãÉ ÍÇáíÇ.";
+
+var lists_edit_submit = "ÃÏÎá ÇáÊÛííÑÇÊ Úáì ŞæÇÆãß";
+var lists_edit_notes = "<font color=red size=+1>ãáÇÍÙÉ:</font><br>áÍĞİ Ãí ŞÇÆãÉ ÃÊÑß ÅÓãåÇ İÇÑÛÇ.";
+var lists_edit_header = "<font color=red size=+1>ŞæÇÆã ÇáÃÚÖÇÁ ÇáÎÇÕÉ Èß</font><br>"
+	+ "áÅÖÇİÉ ŞæÇÆã ÃÚÖÇÁ ÎÇÕÉ Èß"
+	+ "<br>" + "ÃÏÎá ÚäæÇíä áßá ŞÇÆãÉ İí ÇáÎÇäÇÊ ÃÏäÇå";
+
+var lists_edit_header_arm = "<font color=red size=+1>ŞæÇÆã ÇáÃÚÖÇÁ ÇáÎÇÕÉ ÈåĞÇ ÇáãäÊÏì</font><br>"
+	+ "áÅÖÇİÉ ŞæÇÆã ÃÚÖÇÁ ÎÇÕÉ ÈÇáãäÊÏì"
+	+ "<br>" + "ÃÏÎá ÚäæÇíä áßá ŞÇÆãÉ İí ÇáÎÇäÇÊ ÃÏäÇå";
+
+var lists_edit_number = "ÑŞã ÇáŞÇÆãÉ";
+var lists_edit_title = "ÚäæÇä ÇáŞÇÆãÉ";
+var list_confirm_delete_item = "ÇáÑÌÇÁ ÊÃßíÏ ÍĞİ ÇáÚÖæ ãä åĞå ÇáŞÇÆãÉ";
+var list_delete_item = "ÃÍĞİ åĞÇ ÇáÚÖæ ãä åĞå ÇáŞÇÆãÉ";
+
+var list_add_locked = "áã íÊã ÅÖÇİÉ ÇáÚÖæ ááŞÇÆãÉ áÃä ÚÖæíÊå ãŞİæáÉ ÍÇáíÇ";
+var list_add_notfound = "áã íÊã ÅÖÇİÉ ÇáÚÖæ ááŞÇÆãÉ áÃä ÑŞã ÇáÚÖæíÉ ÇáãØáæÈ ÛíÑ ÕÍíÍ";
+var list_add_failed = "áã íÊã ÅÖÇİÉ ÇáÚÖæ ááŞÇÆãÉ  ÈÓÈÈ Îáá İäí - ÇáÑÌÇÁ ÇáãÍÇæáÉ ãÑÉ ÃÎÑì";
+var list_add_exists = "áã íÊã ÅÖÇİÉ ÇáÚÖæ ááŞÇÆãÉ  áÃäå ãæÌæÏ İí ÇáŞÇÆãÉ ÍÇáíÇ";
+var list_add_cannot_add_self = "áÇ íÓãÍ áß ÈÅÖÇİÉ äİÓß áåĞå ÇáŞÇÆãÉ";
+var list_add_full = "áÇ íãßäß ÅÖÇİÉ ÃÚÖÇÁ áåĞå ÇáŞÇÆãÉ áÃäåÇ æÕáÊ áÍÏ ÊÎÒíäåÇ."
+	+ "<br>"
+	+ "áÅÖÇİÉ åĞÇ ÇáÚÖæ ááŞÇÆãÉ ÇáÑÌÇÁ ÅÒÇáÉ ÃÚÖÇÁ ãäåÇ ÃæáÇ.";
+
+var lists_add_header = "<font color=red size=+1>ÅÖÇİÉ ÚÖæ áŞæÇÆãß ÇáÎÇÕÉ</font><br>";
+var lists_add_header_member = "ÇáÚÖæ ÇáĞí ÓíÊã ÅÖÇİÊå";
+var lists_add_header_list = "ÇáŞÇÆãÉ ÇáÊí ÊÑíÏ ÅÖÇİÉ ÇáÚÖæ áåÇ";
+var lists_add_submit = "ÃÖİ ÇáÚÖæ ááŞÇÆãÉ ÇáãÎÊÇÑÉ";
+var lists_menus_add = "ÃÖİ ŞÇÆãÉ åäÇ";
+
+var online_now = "ãÊÕá ÇáÂä";
